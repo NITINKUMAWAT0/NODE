@@ -6,3 +6,6 @@ const BoloNamaste = require('./5.utils')
 console.log(names);
 BoloNamaste(names.name2);
 BoloNamaste(names.name4);
+const data = require('./6.alternative_flavous');
+
+console.log(data.items);
