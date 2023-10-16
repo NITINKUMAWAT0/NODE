@@ -1,32 +1,18 @@
-const { readFile, writeFile } = require('fs');
+const { readFileSync, writeFileSync } = require("fs");
+console.log("**Start**");
+const first = readFileSync("./content/first.txt", "utf8");
+const second = readFileSync("./content/second.txt", "utf8");
+const text = readFileSync("./content/subFolder/text.txt", "utf-8");
+console.log(first, second, text);
 
-readFile('./content/first.txt', 'utf-8', (err, result) => {
-    if (err) {
-        console.log(err);
-        return
-    } else {
-        console.log(result);
-    }
-    const first = result
-    readFile('./content/first.txt', 'utf-8', (err, result) => {
-        if (err) {
-            console.log(err);
-            return
-        } else {
-            console.log(result);
-        }
-        const second = result
-        writeFile('./content/result-async.txt',
-            `Here is the result : ${first},${second}`,
-            (err, result) => {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    console.log(result);
-                }
+writeFileSync(
+  "./content/result-sync.txt",
+  `Here is a result   : ${first} , ${second} , ${text}`,
+  { flag: "a" }
+);
+const result = readFileSync("./content/result-sync.txt", "utf8");
 
-            }
-        )
-    })
-})
+console.log(result);
+console.log("**End**");
+
+console.log("**Starts a new block**");
